@@ -31,10 +31,12 @@ def findLetter():
     txt = list(txtPalabra.get())
     intents = 10
     i=0
-    # while i < intents:
+    characters= ("_ "*len(txt))
+    lblShowString.config(text=characters)
     txtEnterChar.delete(0,END)
     if char in txt:
         entryLabelResult.config(text="Se encontro la palabra  :D")
+        
     else:
         entryLabelResult.config(text="No se encontro la palabra :c")
     
@@ -64,5 +66,7 @@ btnStart.pack()
 entryLabelResult = Label(text="")
 entryLabelResult.pack()
 
+lblShowString = Label(text="")
+lblShowString.pack()
 root.mainloop()
 
