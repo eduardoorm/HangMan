@@ -23,23 +23,27 @@ def EnteredChar():
     lblEnterChar.pack()
     txtEnterChar.pack()
     btnIntent.pack()
-   
 
+def convertListToString(list):
+    stringTxt = "".join(list)
+    return stringTxt
+
+def assingCharacters(txt):
+    characters= ("_ "*len(txt))
+    lblShowString.config(text=characters)
 
 def findLetter():
     char = txtEnterChar.get()
     txt = list(txtPalabra.get())
-    intents = 10
     i=0
-    characters= ("_ "*len(txt))
-    lblShowString.config(text=characters)
+    assingCharacters(txt)
     txtEnterChar.delete(0,END)
     
-
-
     if char in txt:
         entryLabelResult.config(text="Se encontro la palabra  :D")
-        
+        txt.remove(char)
+        txtPalabra.set(convertListToString(txt))
+        assingCharacters(txt)
     else:
         entryLabelResult.config(text="No se encontro la palabra :c")
     
