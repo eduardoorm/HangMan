@@ -34,6 +34,9 @@ def findLetter():
     characters= ("_ "*len(txt))
     lblShowString.config(text=characters)
     txtEnterChar.delete(0,END)
+    
+
+
     if char in txt:
         entryLabelResult.config(text="Se encontro la palabra  :D")
         
