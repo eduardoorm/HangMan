@@ -16,7 +16,13 @@ def StartPlay():
 def acceptString():
     btnAccept.pack_forget()
     entryPalabra.pack_forget()
-    string.pack_forget()
+    string.pack_forget( )
+    global newArray 
+    newArray = list(txtPalabra.get())
+    for i  in enumerate(newArray) :
+        newArray[i]="_"
+    
+    ShowString(newArray)  
     EnteredChar()
 
 def EnteredChar():
@@ -28,36 +34,32 @@ def convertListToString(list):
     stringTxt = "".join(list)
     return stringTxt
 
-def assingCharacters(txt):
-    characters= ("_ "*len(txt))
-    lblShowString.config(text=characters)
+def ShowString(newArray):
+    stringTxt = " ".join(newArray)
+    lblShowString.config(text=stringTxt)
 
 def findLetter():
     char = txtEnterChar.get()
     txt = list(txtPalabra.get())
-    i=0
-    assingCharacters(txt)
+    print("txt",txt)
+    ShowString(newArray)
     txtEnterChar.delete(0,END)
     
     if char in txt:
         entryLabelResult.config(text="Se encontro la palabra  :D")
-        txt.remove(char)
-        txtPalabra.set(convertListToString(txt))
-        assingCharacters(txt)
+        index = txt.index(char)
+        newArray[index] = char
+        ShowString(newArray)
+
     else:
         entryLabelResult.config(text="No se encontro la palabra :c")
     
-    # i+=1
-
-
-
-
 
 string = tk.Label(text="Ingrese una palabra")
 txtPalabra= StringVar()
 entryPalabra = tk.Entry(textvariable=txtPalabra)
 
-
+newArray =[]
 btnAccept = tk.Button(text="accept",command=acceptString)
 
 lblEnterChar = tk.Label(text="Ingrese una letra")
