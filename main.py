@@ -19,7 +19,7 @@ def acceptString():
     string.pack_forget( )
     global newArray 
     newArray = list(txtPalabra.get())
-    for i  in enumerate(newArray) :
+    for i,value  in enumerate(newArray) :
         newArray[i]="_"
     
     ShowString(newArray)  
